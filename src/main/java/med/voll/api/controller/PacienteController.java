@@ -38,6 +38,6 @@ public class PacienteController {
     @Transactional
     public void excluir(@PathVariable Long id) {
         var paciente = repository.getReferenceById(id);
-        paciente.excuir();
+        paciente.excluir();
     }
 }

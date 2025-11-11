@@ -48,7 +48,7 @@ public class Paciente {
 
     }
 
-    public void excuir () {
+    public void excluir () {
         this.ativo = false;
     }
 }
