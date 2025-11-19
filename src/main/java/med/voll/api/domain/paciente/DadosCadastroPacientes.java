@@ -9,10 +9,10 @@ import med.voll.api.domain.endereco.DadosEndereco;
 
 public record DadosCadastroPacientes(
 
-        @NotBlank String nome,
+        @NotBlank(message = "O nome é obrigatório") String nome,
         @NotBlank @Email String email,
         @NotBlank String telefone,
-        @NotBlank @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}\\-?\\d{2}") String cpf,
+        @NotBlank @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}\\-?\\d{2}", message = "\"O CPF deve conter 11 dígitos") String cpf,
         @NotNull @Valid DadosEndereco endereco
 ) {
 }
