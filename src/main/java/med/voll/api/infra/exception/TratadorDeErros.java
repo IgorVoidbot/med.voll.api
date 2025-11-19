@@ -29,7 +29,7 @@ public class TratadorDeErros {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity tratarErroMensagemInvalida(HttpMessageNotReadableException ex) {
-        return ResponseEntity.badRequest().body(ex.getMessage());
+        return ResponseEntity.badRequest().body("Formato do JSON inválido ou campos com tipo errado");
     }
 
     @ExceptionHandler(ValidacaoException.class)
@@ -39,7 +39,7 @@ public class TratadorDeErros {
 
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity tratarErroBadCredentials() {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login ou senha incorretos");
     }
 
     @ExceptionHandler(AuthenticationException.class)
@@ -58,7 +58,6 @@ public class TratadorDeErros {
     }
 
     private record DadosError(String campo, String mensagem) {
-
         public DadosError(FieldError erro) {
             this(erro.getField(), erro.getDefaultMessage());
         }
